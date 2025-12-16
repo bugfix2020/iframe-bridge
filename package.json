@@ -22,15 +22,10 @@
     ],
     "scripts": {
         "build": "tsup",
-        "build:dev": "tsup",
-        "build:test": "tsup",
-        "build:prod": "tsup",
         "dev": "tsup --watch",
         "prepublishOnly": "npm run build",
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
-        "test:watch": "vitest",
-        "type-check": "tsc --noEmit"
     },
     "keywords": [
         "iframe",
