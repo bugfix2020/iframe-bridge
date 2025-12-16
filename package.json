@@ -1,6 +1,6 @@
 {
     "name": "@bugfix2019/iframe-bridge",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A universal iframe JavaScript bridge for secure communication",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.mjs",
