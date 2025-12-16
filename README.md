@@ -7,13 +7,13 @@
 
 一个通用的 iframe JavaScript Bridge，用于浏览器环境下基于 `postMessage` 的安全通信。
 
-> 注意：不支持 SSR（仅支持浏览器环境）。
+> 注意：不支持 SSR，仅支持浏览器环境。
 
 ## ✨ 特性
 
 - 🎯 **100% TypeScript** - 完整类型定义
-- ✅ **测试覆盖率** - Vitest + v8 coverage（覆盖率细化到具体文件）
-- 🚀 **简单 API** - 支持方法调用（request/response）与事件（event）
+- ✅ **测试覆盖率** - Vitest + v8 coverage，覆盖率按文件统计
+- 🚀 **简单 API** - 支持方法调用与事件
 - 🔒 **Origin 校验** - 支持 `allowedOrigins` 白名单
 - 🔧 **React Hook** - 子路径导出 `@bugfix2019/iframe-bridge/react`
 
@@ -31,7 +31,7 @@ yarn add @bugfix2019/iframe-bridge
 ```
 
 **前置要求**:
-- 运行环境：浏览器（不支持 SSR）
+- 运行环境：浏览器，不支持 SSR
 - 开发/测试：Node.js >= 18.0.0
 
 ## 🚀 快速开始
@@ -79,7 +79,7 @@ bridge.on('parentEvent', (data) => console.log('parentEvent:', data));
 bridge.emit('userAction', { action: 'click', target: 'button' });
 ```
 
-React Hook（子路径导出）：
+React Hook：
 
 ```ts
 import { useIframeBridge } from '@bugfix2019/iframe-bridge/react';
@@ -98,7 +98,7 @@ export interface BridgeOptions {
 }
 ```
 
-Hook 参数（概念）：
+Hook 参数：
 
 - `mode: 'child'`：在 iframe 内自动连接 `window.parent`
 - `mode: 'parent'`：需要传入 `iframe` 元素以连接 `iframe.contentWindow`
@@ -117,7 +117,7 @@ npm test
 npm run test:coverage
 ```
 
-覆盖率汇总（具体到文件）：
+覆盖率（按文件）：
 
 | 文件 | 语句覆盖率 | 分支覆盖率 | 函数覆盖率 | 行覆盖率 |
 |------|-----------|-----------|-----------|---------|
@@ -127,7 +127,7 @@ npm run test:coverage
 | src/react/index.ts | 100% | 100% | 100% | 100% |
 | **总计** | **89.12%** | **82.19%** | **100%** | **89.12%** |
 
-说明：纯类型文件 src/types.ts 不参与覆盖率统计。
+纯类型文件 src/types.ts 不参与覆盖率统计。
 
 ## 🛠️ 开发
 
@@ -246,37 +246,3 @@ A: 在不再需要通信时调用 `destroy()`；React 中使用 Hook 时，组�
 
 **Made with ❤️ by [Polaris](https://github.com/bugfix2020)**
 // 子窗口
-try {
-  const auth = await bridge.call('authenticate', { username, password });
-  localStorage.setItem('token', auth.token);
-} catch (error) {
-  console.error('登录失败:', error);
-}
-```
-
-### 3. 实时通知
-
-```typescript
-// 父窗口
-const notifications = new EventSource('/notifications');
-notifications.onmessage = (event) => {
-  bridge.emit('notification', JSON.parse(event.data));
-};
-
-// 子窗口
-bridge.on('notification', (notification) => {
-  showNotification(notification);
-});
-```
-
-## 安全注意事项
-
-1. 始终指定明确的 `targetOrigin` 而不是使用 `'*'`
-2. 设置 `allowedOrigins` 来限制允许通信的域名
-3. 使用 HTTPS 来保护数据传输
-4. 验证所有接收到的数据
-5. 及时调用 `destroy()` 来清理资源
-
-## 许可证
-
-MIT
