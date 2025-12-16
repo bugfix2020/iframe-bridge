@@ -237,12 +237,4 @@ A: 在 `BridgeOptions.allowedOrigins` 里设置白名单（推荐始终设置）
 A: 在不再需要通信时调用 `destroy()`；React 中使用 Hook 时，组件卸载会自动清理。
 
 ---
-
-## 🙏 致谢
-
-感谢所有为本项目做出贡献的开发者！
-
----
-
 **Made with ❤️ by [Polaris](https://github.com/bugfix2020)**
-// 子窗口
