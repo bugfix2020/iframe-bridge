@@ -1,0 +1,67 @@
+{
+    "name": "@bugfix2019/iframe-bridge",
+    "version": "0.0.1",
+    "description": "A universal iframe JavaScript bridge for secure communication",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.mjs",
+    "types": "./dist/types/index.d.mts",
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.mts",
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.mjs"
+        },
+        "./react": {
+            "types": "./dist/types/react/index.d.mts",
+            "require": "./dist/cjs/react/index.js",
+            "import": "./dist/esm/react/index.mjs"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "build:dev": "tsup",
+        "build:test": "tsup",
+        "build:prod": "tsup",
+        "dev": "tsup --watch",
+        "prepublishOnly": "npm run build",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
+        "test:watch": "vitest",
+        "type-check": "tsc --noEmit"
+    },
+    "keywords": [
+        "iframe",
+        "bridge",
+        "postMessage",
+        "communication",
+        "javascript"
+    ],
+    "author": "",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bugfix2020/iframe-bridge.git"
+    },
+    "bugs": {
+        "url": "https://github.com/bugfix2020/iframe-bridge/issues"
+    },
+    "homepage": "https://github.com/bugfix2020/iframe-bridge#readme",
+    "devDependencies": {
+        "@types/react": "^18.2.0",
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/react": "^16.0.0",
+        "@vitest/coverage-v8": "^2.1.8",
+        "happy-dom": "^15.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "tsup": "^8.5.0",
+        "typescript": "~5.8.3",
+        "vitest": "^2.1.8"
+    },
+    "peerDependencies": {
+        "react": ">=16.8"
+    }
+}

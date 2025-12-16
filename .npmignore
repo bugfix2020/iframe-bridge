@@ -1,0 +1,15 @@
+src
+*.ts
+!dist
+!README.md
+!LICENSE
+!package.json
+!.npmrc
+!.yarnrc
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+.vscode
+.idea
+coverage
+*.log
